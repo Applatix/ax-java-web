@@ -1,11 +1,16 @@
 app-web:  
-  build: ./web
+  build: web
+  command: /usr/local/tomcat/bin/catalina.sh run
   ports:
     - "8081:8080"
   links:
     - app-db
+  log_driver: "syslog"
+  log_opt:
+    syslog-facility: "daemon"
 
 app-db:  
-  build: ./database
+  build: database
   expose:
     - "5432"
+
