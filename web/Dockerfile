@@ -1,4 +1,4 @@
-FROM applatix:tomcat  
+FROM applatix/tomcat  
 MAINTAINER dinar@applatix.com
 
 RUN echo "export JAVA_OPTS=\"-Dapp.env=dev\"" > /usr/local/tomcat/bin/setenv.sh  

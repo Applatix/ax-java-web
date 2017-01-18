@@ -1,5 +1,6 @@
-FROM applatix:postgres  
+FROM applatix/tomcat-postgres  
 MAINTAINER dinar@applatix.com
+
 
 ENV POSTGRES_USER postgres  
 ENV POSTGRES_PASSWORD postgres1 
