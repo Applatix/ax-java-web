@@ -1,21 +1,10 @@
-#app-web:  
-#  build: web
-#  command: /usr/local/tomcat/bin/catalina.sh run
-#  ports:
-#    - "8081:8080"
-#  links:
-#    - app-db
-#  log_driver: "syslog"
-#  log_opt:
-#    syslog-facility: "daemon"
-
-app:  
-  build: database
+app:
+  image: applatix/tomcat-postgres
+  command: sh /bin/start.sh  #sh /opt/tomcat/bin/catalina.sh start
+  stdin_open: true
+  tty: true
+  #volumes:
+  #  - .:/code
   ports:
-    - "8081:8080"
-#  expose:
-#    - "5432"
-  volumes:
-    - ./npgeek.sql:/docker-entrypoint-initdb.d/npgeek.sql
-
-
+    - "8080:8080"
+    - "5432:5432"
