@@ -1,8 +1,14 @@
 
 
-##Steps to build
+##Steps to execute
 
 ####On command line under the repo:
+
+
+sudo docker run -dit --name slave01 applatix/jmeter-server /bin/bash
+sudo docker run -dit --name slave02 applatix/jmeter-server /bin/bash
+sudo docker run -dit --name slave03 applatix/jmeter-server  /bin/bash
+
 
 Running the application
 Execute the following command to start our containers:
