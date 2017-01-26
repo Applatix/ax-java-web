@@ -1,0 +1,70 @@
+---
+type: service_template
+subtype: workflow
+name: Applatix jmeter test dynamic fixture
+description: Clone the Applatix/example-dynamic-fixtures repo and run perf tests against database fixtures
+fixtures:
+  - mongodb:
+      template: mongodb
+    redisdb:
+      template: redis
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+    iterations:
+      default: 100000
+steps:
+  - checkout:
+      template: axscm-checkout
+  - test:
+      template: python-dbtest
+      parameters:
+        code: "%%steps.checkout.code%%"
+        redis_ip: "%%fixtures.redisdb.ip%%"
+        mongodb_ip: "%%fixtures.mongodb.ip%%"
+
+---
+type: service_template
+subtype: container
+name: python-dbtest
+description: Run key/value insertion & retrieval tests against MongoDB and Redis
+container:
+  image: python:3.5.2
+  resources:
+    mem_mib: 256
+    cpu_cores: 0.1
+  command: sh -c "pip install -r /src/requirements.txt && /src/dbtest.py --redis %%redis_ip%% --mongodb %%mongodb_ip%% --iterations %%iterations%%"
+inputs:
+  parameters:
+    code:
+    redis_ip:
+    mongodb_ip:
+    iterations:
+  artifacts:
+  - from: "%%code%%"
+    path: "/src"
+
+---
+type: service_template
+subtype: container
+name: mongodb
+description: MongoDB container
+container:
+  image: mongo:3.2.9
+  resources:
+    mem_mib: 256
+    cpu_cores: 0.1
+
+---
+type: service_template
+subtype: container
+name: redis
+description: Redis container
+container:
+  image: redis:3.0.5
+  resources:
+    mem_mib: 256
+    cpu_cores: 0.1

@@ -25,7 +25,7 @@ InCase one needs to add a updated file to container.
 docker exec -i  master sh -c 'cat > /jmeter/apache-jmeter-3.1/bin/jmeter-test.jmx' < jmeter-test.jmx
 
 To run in fully distributed mode. This must be called on the master node. 
- docker exec -it master /bin/bash
+docker exec -it master /bin/bash
 
 ./jmeter -n -t jmeter-test.jmx -R172.17.0.3,172.17.0.4,172.17.0.5
 
