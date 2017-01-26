@@ -3,7 +3,7 @@
 ##Steps to execute
 
 ####On command line under the repo:
-
+```
 docker run -t --name ax-tomcat -p 8080:8080 -p 5432:5432  applatix/tomcat-postgres /bin/run.sh
 
 When you type this URL
@@ -33,4 +33,5 @@ results under
 
 /tmp/result.xml
 
+```
 
