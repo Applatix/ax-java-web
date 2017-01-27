@@ -3,21 +3,22 @@
 
 # Copy the jmx to master.
 #cp /src/jmeter-test.jmx /jmeter/apache-jmeter-3.1/bin/
-tomcatIP = $1
+tomcatIP=$1
+slave1IP=$2
+slave2IP=$3
+slave3IP=$4
+
+
 echo $tomcatIP
-echo "slave1IP= " $2
-echo "slave2IP= " $3
-echo "slave3IP= " $4
+echo $slave1IP
+echo $slave2IP
+echo $slave3IP
 
-echo $1
-
-sed -i 's/REPLACEHOST/$1/g' jmeter-test.jmx
-
-#sed -i “s/REPLACEHOST/$tomcatIP/g” /jmeter/apache-jmeter-3.1/bin/jmeter-test.jmx
+#sed -i "s/REPLACEHOST/`echo $1`/1" jmeter-test.jmx
 
 
-#cd /jmeter/apache-jmeter-3.1/bin
+sed -i "s/REPLACEHOST/$tomcatIP/g" /jmeter/apache-jmeter-3.1/bin/jmeter-test.jmx
 
-ls -al
+cd /jmeter/apache-jmeter-3.1/bin
 
-#./jmeter -n -t jmeter-test.jmx -R172.17.0.3,172.17.0.4,172.17.0.5
+./jmeter -n -t jmeter-test.jmx -R$slave1IP,$slave2IP,$slave3IP
