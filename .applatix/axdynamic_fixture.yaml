@@ -42,7 +42,7 @@ container:
   resources:
     mem_mib: 512
     cpu_cores: 0.2
-  command: sh -c "pip install -r /src/requirements.txt && /src/dbtest.py --redis %%redis_ip%% --mongodb %%mongodb_ip%% --iterations %%iterations%%"
+  command: sh -c "sh /src/run.sh --tomcat_ip %%tomcat_ip%% --slave1_ip %%slave1_ip%% --slave2_ip %%slave2_ip%% --slave3_ip %%slave3_ip%%"
 inputs:
   parameters:
     code:
