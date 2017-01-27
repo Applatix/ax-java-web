@@ -2,12 +2,16 @@
 type: service_template
 subtype: workflow
 name: Applatix jmeter test dynamic fixture
-description: Clone the Applatix/example-dynamic-fixtures repo and run perf tests against database fixtures
+description: Jmeter test demo with dynamic fixtures. 
 fixtures:
-  - mongodb:
-      template: mongodb
-    redisdb:
-      template: redis
+  - tomcat-postgres:
+      template: tomcat-postgres
+    jmeter-slave1:
+      template: jmeter-slave1
+    jmeter-slave2:
+      template: jmeter-slave2
+    jmeter-slave3:
+      template: jmeter-slave3     
 inputs:
   parameters:
     commit:
@@ -15,27 +19,29 @@ inputs:
     repo:
       default: "%%session.repo%%"
     iterations:
-      default: 100000
+      default: 1
 steps:
   - checkout:
       template: axscm-checkout
-  - test:
-      template: python-dbtest
+  - jmeter-test:
+      template: jmeter-test
       parameters:
         code: "%%steps.checkout.code%%"
-        redis_ip: "%%fixtures.redisdb.ip%%"
-        mongodb_ip: "%%fixtures.mongodb.ip%%"
+        tomcat_ip: "%%fixtures.tomcat-postgres.ip%%"
+        slave1_ip: "%%fixtures.jmeter-slave1.ip%%"
+        slave2_ip: "%%fixtures.jmeter-slave2.ip%%"
+        slave3_ip: "%%fixtures.jmeter-slave3.ip%%"
 
 ---
 type: service_template
 subtype: container
-name: python-dbtest
-description: Run key/value insertion & retrieval tests against MongoDB and Redis
+name: jmeter-test
+description: run test against the tomcat server
 container:
-  image: python:3.5.2
+  image: applatix/jmeter-master
   resources:
-    mem_mib: 256
-    cpu_cores: 0.1
+    mem_mib: 512
+    cpu_cores: 0.2
   command: sh -c "pip install -r /src/requirements.txt && /src/dbtest.py --redis %%redis_ip%% --mongodb %%mongodb_ip%% --iterations %%iterations%%"
 inputs:
   parameters:
@@ -50,10 +56,21 @@ inputs:
 ---
 type: service_template
 subtype: container
-name: mongodb
-description: MongoDB container
+name: tomcat-postgres
+description: tomcat-postgres container
 container:
-  image: mongo:3.2.9
+  image: applatix/tomcat-postgres
+  resources:
+    mem_mib: 512
+    cpu_cores: 0.2
+
+---
+type: service_template
+subtype: container
+name: jmeter-slave
+description: jmeter-slave container
+container:
+  image: applatix/jmeter-server
   resources:
     mem_mib: 256
     cpu_cores: 0.1
@@ -61,10 +78,21 @@ container:
 ---
 type: service_template
 subtype: container
-name: redis
-description: Redis container
+name: jmeter-slave
+description: jmeter-slave container
 container:
-  image: redis:3.0.5
+  image: applatix/jmeter-server
+  resources:
+    mem_mib: 256
+    cpu_cores: 0.1
+
+---
+type: service_template
+subtype: container
+name: jmeter-slave
+description: jmeter-slave container
+container:
+  image: applatix/jmeter-server
   resources:
     mem_mib: 256
     cpu_cores: 0.1
