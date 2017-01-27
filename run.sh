@@ -19,13 +19,11 @@ echo $slave3IP
 
 sed -i "s/REPLACEHOST/$tomcatIP/g" /jmeter/apache-jmeter-3.1/bin/jmeter-test.jmx
 
-mkdir -p /tmp/jmeter/
+mkdir -p /src/jmeter-result
 
 cd /jmeter/apache-jmeter-3.1/bin
 
 ./jmeter -n -t jmeter-test.jmx -R$slave1IP,$slave2IP,$slave3IP
 
-
-cat /tmp/jmeter/result.xml
 
 
