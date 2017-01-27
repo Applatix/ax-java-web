@@ -26,6 +26,6 @@ cd /jmeter/apache-jmeter-3.1/bin
 ./jmeter -n -t jmeter-test.jmx -R$slave1IP,$slave2IP,$slave3IP
 
 
-sleep (300)
+cat /tmp/jmeter/result.xml
 
 
