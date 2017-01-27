@@ -7,11 +7,11 @@ fixtures:
   - tomcat-postgres:
       template: tomcat-postgres
     jmeter-slave1:
-      template: jmeter-slave1
+      template: jmeter-slave
     jmeter-slave2:
-      template: jmeter-slave2
+      template: jmeter-slave
     jmeter-slave3:
-      template: jmeter-slave3     
+      template: jmeter-slave     
 inputs:
   parameters:
     commit:
@@ -63,28 +63,6 @@ container:
   resources:
     mem_mib: 512
     cpu_cores: 0.2
-
----
-type: service_template
-subtype: container
-name: jmeter-slave
-description: jmeter-slave container
-container:
-  image: applatix/jmeter-server
-  resources:
-    mem_mib: 256
-    cpu_cores: 0.1
-
----
-type: service_template
-subtype: container
-name: jmeter-slave
-description: jmeter-slave container
-container:
-  image: applatix/jmeter-server
-  resources:
-    mem_mib: 256
-    cpu_cores: 0.1
 
 ---
 type: service_template
