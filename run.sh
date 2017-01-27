@@ -2,7 +2,7 @@
 
 
 # Copy the jmx to master.
-#cp /src/jmeter-test.jmx /jmeter/apache-jmeter-3.1/bin/
+cp /src/jmeter-test.jmx /jmeter/apache-jmeter-3.1/bin/
 tomcatIP=$1
 slave1IP=$2
 slave2IP=$3
