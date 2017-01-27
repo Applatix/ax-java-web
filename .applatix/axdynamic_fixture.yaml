@@ -23,7 +23,7 @@ inputs:
 steps:
   - checkout:
       template: axscm-checkout
-  - jmeter-test:
+  - test:
       template: jmeter-test
       parameters:
         code: "%%steps.checkout.code%%"
@@ -46,8 +46,10 @@ container:
 inputs:
   parameters:
     code:
-    redis_ip:
-    mongodb_ip:
+    tomcat_ip:
+    slave1_ip:
+    slave2_ip:
+    slave3_ip:
     iterations:
   artifacts:
   - from: "%%code%%"
