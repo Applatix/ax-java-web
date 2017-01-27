@@ -77,7 +77,7 @@ subtype: container
 name: jmeter-slave
 description: jmeter-slave container
 container:
-  image: applatix/jmeter-server
+  image: applatix/jmeter-slave
   resources:
     mem_mib: 512
     cpu_cores: 0.2

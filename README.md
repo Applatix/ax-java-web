@@ -10,9 +10,9 @@ When you type this URL
 http://localhost:8080/m3-java-capstone-1.0/
 
 
-docker run -dit --name slave01 applatix/jmeter-server /bin/bash
-docker run -dit --name slave02 applatix/jmeter-server /bin/bash
-docker run -dit --name slave03 applatix/jmeter-server  /bin/bash
+docker run -dit --name slave01 applatix/jmeter-slave /bin/bash
+docker run -dit --name slave02 applatix/jmeter-slave /bin/bash
+docker run -dit --name slave03 applatix/jmeter-slave  /bin/bash
 
 docker run -dit --name master applatix/jmeter-master   /bin/bash
 
