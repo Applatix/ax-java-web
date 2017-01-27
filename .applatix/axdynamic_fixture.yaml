@@ -54,7 +54,12 @@ inputs:
   artifacts:
   - from: "%%code%%"
     path: "/src"
-
+outputs:
+  artifacts:
+    test-results:
+      path: "/tmp/"
+      meta_data:
+        - browsable
 ---
 type: service_template
 subtype: container
@@ -74,5 +79,5 @@ description: jmeter-slave container
 container:
   image: applatix/jmeter-server
   resources:
-    mem_mib: 256
-    cpu_cores: 0.1
+    mem_mib: 512
+    cpu_cores: 0.2
