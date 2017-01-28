@@ -24,10 +24,8 @@ mkdir -p /src/jmeter-result
 cd /jmeter/apache-jmeter-3.1/bin
 
 
-sleep 4500 
-
+#sleep 4500 
 
 ./jmeter -n -t jmeter-test.jmx -R$slave1IP,$slave2IP,$slave3IP
 
-ls -al  /src/jmeter-result
 
