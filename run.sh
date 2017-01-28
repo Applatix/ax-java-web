@@ -23,7 +23,7 @@ mkdir -p /src/jmeter-result
 
 cd /jmeter/apache-jmeter-3.1/bin
 
-./jmeter -n -t jmeter-test.jmx -R$slave1IP,$slave2IP,$slave3IP
+./jmeter -n -t jmeter-test.jmx -R$slave1IP,$slave2IP,$slave3IP -l /src/jmeter-result/log.jtl
 
 
 
