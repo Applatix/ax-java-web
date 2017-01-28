@@ -23,9 +23,10 @@ mkdir -p /src/jmeter-result
 
 cd /jmeter/apache-jmeter-3.1/bin
 
-
+curl http://$tomcatIP:8080/m3-java-capstone-1.0/
 #sleep 4500 
 
-./jmeter -n -t jmeter-test.jmx -R$slave1IP,$slave2IP,$slave3IP
+
+#./jmeter -n -t jmeter-test.jmx -R$slave1IP,$slave2IP,$slave3IP
 
 
