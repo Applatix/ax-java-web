@@ -57,9 +57,9 @@ inputs:
 outputs:
   artifacts:
     test-results:
-      path: "/jmeter/apache-jmeter-3.1/bin/"
+      path: "/src"
       meta_data:
-        - browsable
+        
 ---
 type: service_template
 subtype: container
