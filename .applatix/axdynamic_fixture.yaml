@@ -59,6 +59,7 @@ outputs:
     test-results:
       path: "/src/jmeter-result"
       meta_data:
+        - browsable
         
 ---
 type: service_template
