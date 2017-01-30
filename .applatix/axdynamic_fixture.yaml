@@ -57,7 +57,7 @@ inputs:
 outputs:
   artifacts:
     test-results:
-      path: "/src/jmeter-result"
+      path: "/tmp/jmeter-result"
       meta_data:
         
 ---

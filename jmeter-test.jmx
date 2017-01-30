@@ -567,7 +567,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">/src/jmeter-result/result.xml</stringProp>
+          <stringProp name="filename">/tmp/jmeter-result/result.xml</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
@@ -603,7 +603,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">/src/jmeter-result/result.xml</stringProp>
+          <stringProp name="filename">/tmp/jmeter-result/result.xml</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
